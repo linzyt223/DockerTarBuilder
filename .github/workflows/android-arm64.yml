@@ -1,13 +1,19 @@
 name: 'Hello World'
 description: 'Greet someone and record the time'
-inputs:
-  who-to-greet:  # id of input
-   description: 'Who to greet'
-   required: true
-   default: 'World'
-outputs:
-  time: # id of output
-  description: 'The time we greeted you'
-runs:
-  using: 'docker'
-  image: 'Dockerfile'
+
+on:
+  workflow_dispatch:
+  inputs:
+   docker_images:
+    description: '请填写docker镜像名称 多个用英文逗号分开'
+    required: true
+    default: 'android arm64'  # 设置默认的 Docker 镜像列表
+jobs:
+  pull_and_package:
+      runs-on: ubuntu-latest
+      steps:
+      - name: Clean up Docker to free space
+           
+        runs:
+         using: 'docker'
+         image: 'Dockerfile'
