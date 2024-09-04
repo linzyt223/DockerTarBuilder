@@ -1,0 +1,6 @@
+# action.yml
+name: 'Hello World'
+description: 'build koreader android-arm64'
+runs:
+ using: 'docker'
+ image: 'Dockerfile'
